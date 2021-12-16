@@ -1,0 +1,306 @@
+/* custom properties o en español propiedades personalidas */
+:root{
+    --blanco: #ffffff;
+    --oscuro: #212121; 
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+}
+
+/* globales */
+html{
+    font-size: 62.5%;
+    box-sizing: border-box; /*hack para box model*/
+    scroll-snap-type: y mandatory;
+}
+
+/* scroll snap */
+.servicios,
+.navegacion-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+body{
+    font-size: 16px; /*1rem = 10px*/
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top,/*de abajo hacia arriba*/ var(--grisClaro) 0%, /* 0% indicara que desde la parte más baja empezara*/ var(--blanco) 100%);
+}
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+
+}
+
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 3rem;
+    text-decoration: none;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;  
+    width: 80%;
+    text-align: center;
+    border: none;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+}
+
+.sombra{
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* tipografía */
+h1{
+   font-size: 2.8rem;
+}
+
+h2{
+   font-size: 4rem; 
+}
+
+h3{     
+   font-size: 2.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+} 
+
+/* titulo */
+.titulo{
+    color: var(--primario);
+    display: flex;
+    justify-content: center;
+}
+.titulo span{
+    font-size: 2rem;
+    color: var(--primario);
+    display: flex;
+    align-items: flex-end;
+}
+
+/* utilidades   */
+.w-sm-100{   /* esta clase significa width small 100  */
+    width: 100%;  
+}
+
+@media (min-width: 768px) {
+    .w-sm-100{
+        width: auto;
+    }
+}
+.flex {
+    display: flex;
+}
+.alinear-derecha{  
+    justify-content: flex-end;
+
+}
+
+/* navegación principal */
+.nav-bg{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+@media (min-width: 768px) {
+    .navegacion-principal{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around; 
+    }
+}
+
+.navegacion-principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2.4rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--oscuro);
+}
+
+/* hero */
+.hero{
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat; /*no repite la imagen */
+    background-size: cover; /*la imagen toma todo el ancho*/
+    height: 450px;
+    position: relative;
+    margin-bottom: 2rem;
+
+}
+
+.contenido-hero{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7); /*sintaxis anterior*/
+    background-color: rgb(0 0 0 / 70%); /*otra forma de realizarlo*/
+    width: 100%;
+    height: 100%;
+    /* sirve para centrar un div */
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p{
+     color: var(--blanco);
+
+     
+}
+.contenido-hero .ubicacion{
+    display: flex;
+    align-items: flex-end; /*cuando le cambiamos la dirección con flex-direction: column; align-items sirve para alinear horizontamente, PERO COMO ACÁ NO LE CAMBIAMOS LA DIRECCIÓN FUNCIONA PARA ALINEAR VERTICALMENTE */
+    
+}
+
+
+/* servicios */
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; /*  1fr una fracción del total por lo que se divide ese 100% en 33.3% 33.3% 33.3% */
+        grid-template-columns: repeat(3, 1fr); /* esto es un shorjan le pedimos que repita tres veces 1fr por lo que realiza lo mismo que grid-template-columns: 1fr 1fr 1fr;*/
+        column-gap: 5rem;
+    }       
+}
+
+.servicio{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicio h3{
+   color: var(--secundario);
+   font-weight: normal;
+   
+}
+
+.servicio p{
+    line-height: 2; /* me permite cambiar el interlineado */
+    text-align: center;
+}
+
+.servicio .iconos{
+    width: 15rem;
+    height: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+
+/* contacto */
+.formulario{
+   background-color: var(--gris);  
+   width: min(60rem, 100%); /*utiliza el valor más pequeño, lo que realiza el min es tomar o asignar el ancho(width) al .formulario del número que sea mas pequeño entre 60rem o el 100%  */
+   /* min lo que hace es comparar, que es más pequeño 60rem 0 1160px, por lo que llega a la conclusión que es más pequeño 60rem y ese toma */
+   margin: 0 auto;  /* me sirve para centrar, como en este caso un formulario, siempre y cuando el padre no sea un display: flex; si tuviera un su padre un display flex entonces podria realizarlo con justify content, se puede centar con margin 0 auto cuando sea un elemento de tipo bloque que tome todo el espacio disponible */
+   padding: 2rem;
+   border-radius: 1rem;
+
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem; /*separación de columnas*/
+    }
+    .campo:nth-child(3),
+    .campo:nth-child(4){  /*nth-child funciona para tomar todas las etiquetas que tienen la misma clase en este caso campo la comparte varias etiquetas por lo que nos ahorramos el crear otra clase, la forma de utilizarla es sencilla ya que se cuenta de 1 en 1 es decir 1, 2, 3*/
+        grid-column: 1 / 3;
+    }
+}
+
+.campo{
+    margin-bottom: 1rem;
+    
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.campo textarea{
+    height: 20rem;
+}
+
+.input-text{   
+     width: 100%; /* con esto le digo que tome todo el espacio disponible */
+     border: none;
+     padding: 1.5rem;
+     border-radius: .5rem; 
+     
+}
+
+.enviar .boton{
+    width: 100%;
+
+}
+
+/* footer */
+.footer{
+    text-align: center;
+
+}
+.footer span{
+    color: var(--primario);
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
